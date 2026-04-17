@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Them cong viec</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 24px; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; margin-bottom: 6px; font-weight: 600; }
+        input, select { width: 320px; padding: 8px; }
+        .error { color: #c62828; font-size: 14px; margin-top: 4px; }
+        .actions { margin-top: 16px; }
+        button, a {
+            display: inline-block;
+            padding: 8px 12px;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+        button { background: #0b6bcb; color: #fff; }
+        a { background: #ddd; color: #222; }
+    </style>
+</head>
+<body>
+<h1>Them cong viec moi</h1>
+
+<form th:action="@{/tasks}" th:object="${taskItem}" method="post">
+    <div class="form-group">
+        <label for="id">Ma cong viec</label>
+        <input id="id" type="text" th:field="*{id}" placeholder="Vi du: T010"/>
+    </div>
+
+    <div class="form-group">
+        <label for="title">Ten cong viec</label>
+        <input id="title" type="text" th:field="*{title}" placeholder="Nhap ten cong viec"/>
+        <div class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="deadline">Han hoan thanh</label>
+        <input id="deadline" type="date" th:field="*{deadline}"/>
+        <div class="error" th:if="${#fields.hasErrors('deadline')}" th:errors="*{deadline}"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="priority">Muc do uu tien</label>
+        <select id="priority" th:field="*{priority}">
+            <option value="">-- Chon muc do --</option>
+            <option value="HIGH">HIGH</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="LOW">LOW</option>
+        </select>
+        <div class="error" th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}"></div>
+    </div>
+
+    <div class="actions">
+        <button type="submit">Luu cong viec</button>
+        <a th:href="@{/tasks}">Quay lai danh sach</a>
+    </div>
+</form>
+</body>
+</html>

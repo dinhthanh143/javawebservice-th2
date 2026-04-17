@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sach cong viec</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 24px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f3f3f3; }
+        a.button {
+            display: inline-block;
+            padding: 8px 12px;
+            background: #0b6bcb;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<h1>Danh sach cong viec</h1>
+<a th:href="@{/tasks/new}" class="button">Them cong viec moi</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Ma cong viec</th>
+        <th>Ten cong viec</th>
+        <th>Han hoan thanh</th>
+        <th>Muc do uu tien</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(tasks)}">
+        <td colspan="4">Chua co cong viec nao.</td>
+    </tr>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.id}">T001</td>
+        <td th:text="${task.title}">Sample title</td>
+        <td th:text="${task.deadline}">2026-04-18</td>
+        <td th:text="${task.priority}">HIGH</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
