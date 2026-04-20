@@ -1,4 +1,4 @@
-package com.example.mvc3_j11.config;
+package com.example.project_base_spring_mvc.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
